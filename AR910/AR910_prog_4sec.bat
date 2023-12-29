@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\STMicroelectronics\st_toolset\stvp\stvp.exe" -project=AR910\AR910_4sec.stp

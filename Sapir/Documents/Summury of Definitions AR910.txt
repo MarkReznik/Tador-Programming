@@ -1,0 +1,8 @@
+AR910
+Enter to programming the related monitor ID and defult panel ID:
+1. Set the two dip-switches on -> two leds will blink once. The monitor will get address 0(32) automaticly.
+2. Each press the right button - will increment the monitor address by 1 and the blue led will blink once. 
+	(For exm: press once - will set the monitor address 1).
+3. First press the middle button - will set the panel address to DS-1 and the red led will blink once. 
+	Then each press the middle button - will increment the panel address to DS-2,3,4.
+4. Set the two dip-switches off to exit from programming.

@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\STMicroelectronics\st_toolset\stvp\stvp.exe" -project=dj4a_update_for_ring_problem.stp

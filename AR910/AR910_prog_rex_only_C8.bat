@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\STMicroelectronics\st_toolset\stvp\stvp.exe" -project=AR910\DT595_AR910_rex_only_C8.stp

@@ -1,0 +1,2 @@
+Hebrew 	- remove RLENG resisor.
+English - assemble RLENG 1K or 10K resistor.

@@ -1,0 +1,8 @@
+Reset options:
+1=reset user codes
+2=reset routes
+3=reset times
+4=reset names
+5=reset all
+6=reset phones
+7=reset settings
