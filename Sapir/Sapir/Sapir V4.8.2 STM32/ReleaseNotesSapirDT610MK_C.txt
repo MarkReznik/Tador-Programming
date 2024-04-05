@@ -1,0 +1,36 @@
+Release Notes Sapir STM32 DT610C
+
+V3.7.7: 1. Added Waveplayer emFile decoding from spi flash. DEFAULT.CFG file for used files.
+        2. DT610C Added Keypad support. 
+        3. Added REX support.
+V3.7.8  1. DT610C Changed debug SWD identification logic   
+
+V3.7.9	1. DT610MK_C	Added keypad support  
+	2. DT610MK_C	Added support 2 buttons from flat cable socket .  
+
+V3.7.10	1. Added Voice Lang select. Cell 63
+	2. Added Voice Volume control. Cell 64
+	3. Added I2C MIC Cell 65 and SPK Cell 66 control during talking.
+        4. Added Multi-language. 1=HEB, 2=ENG, 3=? 4=?
+        5. LEDs. Keyboard LEDs always ON. Button LED ON during Unlock, Blink during programming.
+	6. Reset master code 123456 by two long press 1st button after power up.
+        
+V3.7.11
+        1. Added delay before send WAVE CLOSE. Was trrrrrrr.
+        
+V3.7.12
+        1. Added delay before send WAVE UNLOCK. Was trrrrrrr. 
+        2. Added Camera_1 sensor. Camera LED light when sense 0V.
+        3. Removed WAVE_CALL WAVE_TALK during Camera call panel DIR=1
+        
+V3.7.13
+        1. All Wave Playback delayed and playing during silent time, playback interrupt if received or sended data over 2-Wires.
+        2. Added setting defaults values to button cells while change to panel mode 0 (Villa). 
+        
+V3.7.14
+        1. Updated Force Call default to 1. 
+        2. Github initial commit
+        
+V4.8.2  
+        1. V3.7.14 Version change to V4.8.2. 4=STM32L, (3=STM8L)  Based on V3.8.2   
+        2. No video during monitor call to DS-2,3,4. Removed 0x38 send after 0x7E. 

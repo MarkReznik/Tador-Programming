@@ -1,0 +1,65 @@
+DT597 V3 CELL DEFINITIONS
+
+CELL NUM        DEFAULTS                		DESCRIPTION
+00              33                     	 		TIME FOR RLY 1,2(1 DIG FOR EACH) ZERO CHANGED TO 1 SEC BY THE PROGRAM               
+01-50           01=123                  		CODES FOR RLY 1 OR 2 (1-6 DIGITS)
+51-54           51=00,52=16,53=03,54=04     		DEFINITION FOR CALL BUTTONS 51=BUTTON 1,(2,3,4) TO WHICH MONITOR WILL CALL (00(32) - 31 MUST BE 2 DIGITS), 
+                                                		IN CASE OF MODE SINGLE (GROUP 0-15 & 16-31) THE FIRST BUTTON CALL 0 AND SECOND CALL 16. NO CHANGES IN CELLS.
+60              0                                       Call gsm modes: monitor id='MID'=00-31(00=32) MODE=0-No transfer, 1=No answer, 2 simultany. 60->MID->MODE
+61              Empty                                   Call gsm phones no pause: 61->MID->PHONE
+63		1					0=No voice, 1=Hebrew, 2=English
+64		5					Voice messages volume 1-9
+65		7					Microphone gain 1-9
+66		4					Speaker intercom volume 1-9
+81              03                      		RLY 1 TIME 2 DIGITS (SECONDS) ZERO CHANGED TO 1 SEC BY THE PROGRAM 1-99
+82              00                      		CAMERA TIME. NOT IMPLEMENTED. NOT USED.
+83              03                      		RLY 2 TIME 2 DIGITS (SECONDS) ZERO CHANGED TO 1 SEC BY THE PROGRAM 1-99
+84              00                      		RLY 1 WAIT TIME 2 DIGITS (SECONDS) 0-30
+85              00                      		RLY 2 WAIT TIME 2 DIGITS (SECONDS) 0-30
+86              00                                      LOCK Inverse. first left digit=lock 1. 0=NO 1=NC
+87              0                                       Bell use. 0=Don't use bell. 1=Use bell as button 1
+88              1                                       Send Unlock RLC Broadcast. 0-disabled 1-enabled
+90              01                      		PANEL ID (1=DS-1,2=DS-2,3=DS-3,4=DS-4 MUST BE 1 DIGIT) DS=Door Station.
+91              0                       			PANEL MODE  (0,1,2,3 MUST BE ONE DIGIT)    	
+                                                    		0=CALL MONITORS IN GROUPE (0-15,16-31), 
+                                                    		1=CALL EACH MONITOR + ANSWER EACH, 
+                                                    		2=ANSWER ONLY ON MONITORS GUARD CALL (PROGRAMMED IN 51)
+                                                    		3=ANSWER ONLY ON MONITORS CALL (PROGRAMMED IN 51)
+                                                                4=DJ
+                                                                5=BDU
+                                                                6=IPG. (BDU Gateway not supported from ver 3.7.4)
+92              50                              		AMOUNTS OF CODES FOR RLY 1. THE REST FOR RLY 2.
+93              0                               		1=PANEL OFF SYSTEM AFTER UNLOCK 0=NO ACTION
+94              45                              		CALL TIME (SECONDS) MUST BE 2 DIGITS
+95              60                              		SPEAK TIME (SECONDS) MUST BE 2,3 DIGITS 20 - 180 sec
+96              1                               		BEEP WHILE UNLOCK. 1=BEEP ON WHILE RLY CLOSED, 0=BEEP ONLY WHEN * PRESSED.
+97              NA                              		5=RESET ALL CELLS TO DEFAULT, 0000=CLEAR ALL RLY CODES ONLY.
+98              1                                       	0=DISABLE PANEL CALL DURING OTHER PANEL CALL 1=ENABLE PANEL CALL DURING OTHER PANEL CALL
+99              123456                          		MASTER CODE 6 DIGITS ONLY.
+
+NOTE: HARDWARE MASTER RESET TO 123456 : POWER OFF -> ADDR1,2 = ON -> PRESS BUTTON 1 OR BELL(#) -> POWER ON AFTER BEEP ITS DONE.
+
+V3.7.5 : 
+        1. Added keypad unlock disable via light control on monitor
+V3.7.11
+        1. Default User code changed to '123' cell 1.
+        2. Default Bell button behaviour changed to 0=disabled.
+        3. Reset master code to '123456' sequence changed. 611_2P power on -> long press btn1 (1 beep) -> long press btn1 (3 beeps). 
+        4. Removed Factory Restore Eeprom values if new FW different from current one.
+        5. Fixed lock isuues.
+V3.7.12
+        1. Added delay before send WAVE UNLOCK. Was trrrrrrr. 
+        2. Added Camera_1 sensor. Camera LED light when sense 0V.
+        3. Removed WAVE_CALL WAVE_TALK during Camera call panel DIR=1
+        
+V3.7.13
+        1. All Wave Playback delayed and playing during silent time, playback interrupt if received or sended data over 2-Wires.
+        2. Added setting defaults values to button cells while change to panel mode 0 (Villa). 
+        
+V3.7.14
+        1. Updated Force Call default to 1. 
+        2. Github initial commit
+        
+V4.8.2  
+        1. V3.7.14 Version change to V4.8.2. 4=STM32L, (3=STM8L)  Based on V3.8.2   
+        2. No video during monitor call to DS-2,3,4. Removed 0x38 send after 0x7E.         
