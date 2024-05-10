@@ -1,0 +1,57 @@
+DT597 V3 CELL DEFINITIONS
+
+CELL NUM        DEFAULTS                		DESCRIPTION
+00              33                     	 		TIME FOR RLY 1,2(1 DIG FOR EACH) ZERO CHANGED TO 1 SEC BY THE PROGRAM               
+01-50           01=456                  		CODES FOR RLY 1 OR 2 (1-6 DIGITS) or Scan fingerprint 50 for each out of 4 groups (01->scan,02,03,04).
+51-54           51=01,52=02,53=03,54=04     	DEFINITION FOR CALL BUTTONS 51=BUTTON 1,(2,3,4) TO WHICH MONITOR WILL CALL (00(32) - 31 MUST BE 2 DIGITS), 
+                                                		IN CASE OF MODE SINGLE (GROUP 0-15 & 16-31) THE FIRST BUTTON CALL 0 AND SECOND CALL 16. NO CHANGES IN CELLS.
+60              0                                       Call gsm modes: monitor id='MID'=00-31(00=32) MODE=0-No transfer, 1=No answer, 2 simultany. 60->MID->MODE
+61              Empty                                   Call gsm phones no pause: 61->MID->PHONE
+81              03                      		RLY 1 TIME 2 DIGITS (SECONDS) ZERO CHANGED TO 1 SEC BY THE PROGRAM 1-99
+82              00                      		CAMERA TIME. NOT IMPLEMENTED. NOT USED.
+83              03                      		RLY 2 TIME 2 DIGITS (SECONDS) ZERO CHANGED TO 1 SEC BY THE PROGRAM 1-99
+84              00                      		RLY 1 WAIT TIME 2 DIGITS (SECONDS) 0-30
+85              00                      		RLY 2 WAIT TIME 2 DIGITS (SECONDS) 0-30
+86              00                                      LOCK Inverse. first left digit=lock 1. 0=NO 1=NC
+87              0                                       Bell use. 0=Don't use bell. 1=Use bell as button 1
+88              1                                       Send Unlock Broadcast. 0-disabled 1-enabled
+90              01                      		PANEL ID (1=DS-1,2=DS-2,3=DS-3,4=DS-4 MUST BE 1 DIGIT) DS=Door Station.
+91              1                       			PANEL MODE  (0,1,2,3 MUST BE ONE DIGIT)    	
+                                                    		0=CALL MONITORS IN GROUPE (0-15,16-31), 
+                                                    		1=CALL EACH MONITOR + ANSWER EACH, 
+                                                    		2=ANSWER ONLY ON MONITORS GUARD CALL (PROGRAMMED IN 51)
+                                                    		3=ANSWER ONLY ON MONITORS CALL (PROGRAMMED IN 51)
+                                                                4=DJ
+                                                                5=BDU
+                                                                6=IPG. (BDU Gateway not supported from ver 3.7.4)
+92              50                              		AMOUNTS OF CODES FOR RLY 1. THE REST FOR RLY 2.
+93              0                               		1=PANEL OFF SYSTEM AFTER UNLOCK 0=NO ACTION
+94              30                              		CALL TIME (SECONDS) MUST BE 2 DIGITS
+95              30                              		SPEAK TIME (SECONDS) MUST BE 2,3 DIGITS 20 - 180 sec
+96              1                               		BEEP WHILE UNLOCK. 1=BEEP ON WHILE RLY CLOSED, 0=BEEP ONLY WHEN * PRESSED.
+97              NA                              		5=RESET ALL CELLS TO DEFAULT, 0000=CLEAR ALL RLY CODES ONLY.FP:group01,02,03,04->1111,2222,3333,4444
+98              1                                       	0=DISABLE PANEL CALL DURING OTHER PANEL CALL 0=ENABLE PANEL CALL DURING OTHER PANEL CALL
+99              123456                          		MASTER CODE 6 DIGITS ONLY.
+
+NOTE: HARDWARE MASTER RESET TO 123456 : POWER OFF -> ADDR1,2 = ON -> PRESS BUTTON 1 OR BELL(#) -> POWER ON AFTER BEEP ITS DONE.
+
+FINGER PRINT 200 total cells. Clear group of 50 cells: 971111,972222,973333,974444. clears each group 01 02 03 04 of 50 fingers.
+FINGER PRINT input finger to group 01: 01->scan finger.
+
+V3.7.5 : 
+1. Added keypad unlock disable via light control on monitor
+V3.7.6
+1. Default User code changed to '123' cell 1.
+2. Default Bell button behaviour changed to 1=like pushbutton 1.
+3. Reset master code to '123456' sequence changed. Sapir-DIP 1,2->ON + Bell or Call_1 button. 
+4. Removed Factory Restore Eeprom values if new FW different from current one.
+
+V3.8.0:
+1. Last change
+2. 2nd change try Github connected
+
+V3.8.1_fp02
+1. Sapir finger print compiled hex.
+
+V3.8.2 (fp1-fingerprint, com-com118)
+1. Monitor call to panel 2,3,4 no video fix. Only OK response, removed 0x38 after 0x7E(OK).
